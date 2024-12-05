@@ -1,0 +1,52 @@
+function removeDuplicates(nums) {
+    if (nums.length === 0) return 0;
+
+    let uniqueIndex = 0; 
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] !== nums[uniqueIndex]) {
+            uniqueIndex++;
+            nums[uniqueIndex] = nums[i];
+        }
+    }
+
+    return uniqueIndex + 1;
+}
+
+let nums = [2, 2, 3, 3, 3, 4, 5, 5];
+let newLength = removeDuplicates(nums);
+console.log(`Длина нового массива: ${newLength}, измененный массив: ${nums.slice(0, newLength)}`);
+
+------------------------------------------------------------------------------------------------------------------------
+
+function SortedArrays(arr1, arr2) {
+    let Array = [];
+    let i = 0, j = 0;
+
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            Array.push(arr1[i]);
+            i++;
+        } else {
+            Array.push(arr2[j]);
+            j++;
+        }
+    }
+
+    while (i < arr1.length) {
+        Array.push(arr1[i]);
+        i++;
+    }
+
+    while (j < arr2.length) {
+        Array.push(arr2[j]);
+        j++;
+    }
+
+    return Array;
+}
+
+let arr1 = [1, 3, 5];
+let arr2 = [2, 4, 6];
+let Array = SortedArrays(arr1, arr2);
+console.log(`Объединенный массив: ${Array}`);
