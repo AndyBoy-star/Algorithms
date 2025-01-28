@@ -1,0 +1,19 @@
+function frequencyAnalysis(s) {
+    s = s.toLowerCase();
+
+    const frequency = {};
+
+    for (const char of s) {
+        if (char >= 'a' && char <= 'z') {
+            frequency[char] = (frequency[char] || 0) + 1;
+        }
+    }
+
+    const sortedFrequency = Object.entries(frequency).sort(([charA], [charB]) => charA.localeCompare(charB));
+
+    sortedFrequency.forEach(([char, count]) => {
+        console.log(`${char} - ${count}`);
+    });
+}
+
+frequencyAnalysis("АbraСadabra");
