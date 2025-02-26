@@ -1,0 +1,15 @@
+function getFastestElevator(elevators, callFloor) {
+    return elevators.reduce((fastest, elevator) => {
+        const time = Math.abs(elevator.currentFloor - callFloor) * elevator.speed;
+        return time < fastest.time ? { elevator, time } : fastest;
+    }, { elevator: null, time: Infinity }).elevator.name;
+}
+
+const elevators = [
+    { name: 'A', currentFloor: 4, speed: 3 },
+    { name: 'B', currentFloor: 8, speed: 2 },
+    { name: 'C', currentFloor: 5, speed: 2 }
+];
+
+const callFloor = 1;
+console.log(getFastestElevator(elevators, callFloor));
